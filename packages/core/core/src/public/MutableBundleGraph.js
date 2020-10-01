@@ -207,9 +207,9 @@ export default class MutableBundleGraph extends BundleGraph<IBundle>
     );
   }
 
-  createBundleReference(from: IBundle, to: IBundle): void {
+  createBundleReference(from: IAsset, to: IBundle): void {
     return this.#graph.createBundleReference(
-      bundleToInternalBundle(from),
+      assetToAssetValue(from),
       bundleToInternalBundle(to),
     );
   }
@@ -285,13 +285,6 @@ export default class MutableBundleGraph extends BundleGraph<IBundle>
               },
         visit,
       ),
-    );
-  }
-
-  requireBundleForAsset(bundle: IBundle, asset: IAsset) {
-    this.#graph.requireBundleForAsset(
-      bundleToInternalBundle(bundle),
-      assetToAssetValue(asset),
     );
   }
 }
